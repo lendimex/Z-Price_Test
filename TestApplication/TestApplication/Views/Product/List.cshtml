@@ -1,0 +1,12 @@
+﻿@model TestApplication.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "Товары";
+}
+
+<div class="refresh">
+    @foreach(var p in Model.Products)
+    {
+        Html.RenderPartial("ProductSummary", p);
+    }
+</div>

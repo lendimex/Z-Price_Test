@@ -1,0 +1,26 @@
+﻿@model Dictionary<string, List<TestApplication.Models.FilterViewModel>>
+
+@foreach (var items in Model)
+{
+    <h4>@items.Key</h4>
+    foreach (var item in items.Value)
+    {
+        <div class="alert-link">
+            <label>
+                    @Html.CheckBox(item.Name, item.IsSelected)
+                    @item.Name
+            </label>
+        </div>
+    }
+}
+
+<script type="text/javascript">
+    $("input[type=checkbox]").change(function () {
+        var tb = [];
+        $('input[type=checkbox]:checked').each(function () {
+            tb.push($(this).attr('name'));
+        });
+
+        document.location.href = '/?values=' + tb.join(',');
+    });
+</script>
